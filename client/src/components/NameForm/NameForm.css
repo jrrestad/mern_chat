@@ -1,0 +1,12 @@
+.NameForm > div {
+  margin: 0 auto;
+}
+
+.NameForm .Form {
+  display: flex;
+  flex-direction: column;
+}
+
+.NameForm button {
+  align-self: flex-end;
+}

@@ -1,11 +1,23 @@
 import React from 'react';
+import Messages from '../Messages/Messages';
+import NameForm from '../NameForm/NameForm';
+import './Chat.css';
 
-const ChatView = ({message}) => {
+const ChatView = ({name, setName, messages, handleNewMessage}) => {
   return (
-    <div>
-      <h1>Future Chat App here</h1>
-      <p>Message: {message}</p>
-    </div>
+    <section className="Chat">
+      <header className="bg-dark text-light">
+        <h1>MERN Chat App</h1>
+      </header>
+      {
+        (name)
+          ? <Messages
+            name={name}
+            messages={messages}
+            handleNewMessage={handleNewMessage} />
+          : <NameForm setName={setName} />
+      }
+    </section>
   );
 }
 
