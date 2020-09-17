@@ -43,12 +43,12 @@ sudo service mongod start
 service mongod status
 
 # configure nginx
-sudo chmod 700 /etc/nginx/sites-available/default
-cat ~/$repoName/deploy/nginx-config.txt > /etc/nginx/sites-available/default
+sudo chmod 766 /etc/nginx/sites-available/default
+sudo cat ~/$repoName/deploy/nginx-config.txt > /etc/nginx/sites-available/default
 cd ~/$repoName/server
 sudo service nginx restart
 
 # setup daemon to run server
+cd ..
 sudo npm i pm2 -g
 pm2 start server.js
-pm2 status
