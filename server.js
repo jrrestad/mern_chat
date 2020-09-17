@@ -4,7 +4,7 @@ const sockets = require('socket.io');
 const Message = require('./server/models/message.model');
 
 const app = express();
-const PORT = 8001;
+const PORT = 8000;
 
 require('./server/config/mongoose.config');
 app.use(cors());

@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import ChatView from './ChatView';
 
 const Chat = () => {
-  const [socket] = useState(() => io(':8001'));
+  const [socket] = useState(() => io(':8000'));
   const [name, setName] = useState('');
   const [messages, setMessages] = useState([]);
 
