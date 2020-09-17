@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import MessageForm from '../MessageForm/MessageForm';
 import {Col, Row} from 'react-bootstrap';
 import './Messages.css';
 import Message from './Message';
 
-const MessagesView = ({messages, handleMessageSubmit}) => {
+const MessagesView = ({name, messages, handleMessageSubmit}) => {
+  const msgBox = useRef();
+
+  useEffect(() => {
+    msgBox.current.scrollTop = msgBox.current.scrollHeight;
+  })
+
   return (
     <Row className="Messages">
-      <Col md={10}>
+      <Col md={8}>
         <h2 className="text-center">Messages</h2>
-        <div className="msg-box">
+        <div className="msg-box" ref={msgBox}>
           {
             messages.map((message, i) => {
-              return <Message key={i} message={message} />
+              return <Message name={name} key={i} message={message} />
             })
           }
         </div>

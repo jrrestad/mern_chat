@@ -15,4 +15,8 @@ const server = app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
 const io = sockets(server);
 io.on("connection", async function(socket) {
   socket.emit("firstConnect", await Message.find({}));
+
+  socket.on('createMessage', async data => {
+    socket.broadcast.emit('newMessage', await Message.create(data));
+  });
 });

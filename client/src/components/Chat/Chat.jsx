@@ -8,19 +8,23 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
 
   const handleNewMessage = (newMessage, isSending=false) => {
-    setMessages([...messages, newMessage]);
+    console.log(messages);
+    setMessages(prevMessages => [...prevMessages, newMessage]);
     if (isSending) {
       socket.emit('createMessage', newMessage);
     }
   }
 
   useEffect(() => {
-    socket.on('firstConnect', data => setMessages(data));
+    socket.on('firstConnect', data => {
+      setMessages(data);
+    });
     socket.on('newMessage', data => handleNewMessage(data));
     return () => socket.disconnect(true);
-  });
+  }, []);
 
   return <ChatView
+    socket={socket}
     name={name}
     setName={setName}
     messages={messages}

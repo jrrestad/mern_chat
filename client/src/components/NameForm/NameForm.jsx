@@ -2,10 +2,16 @@ import React from 'react';
 import {Button, Col, Form, Row} from 'react-bootstrap';
 import './NameForm.css';
 
-const NameForm = ({setName}) => {
+const NameForm = ({socket, setName}) => {
   const handleSubmit = e => {
     e.preventDefault();
-    setName(e.target['name'].value);
+    const name = e.target['name'].value;
+    setName(name);
+    socket.emit('createMessage', {
+      name: name,
+      content: `${name} has joined the chat`,
+      type: 'systemMessage'
+    })
   }
 
   return (

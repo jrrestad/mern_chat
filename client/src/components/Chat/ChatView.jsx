@@ -3,7 +3,7 @@ import Messages from '../Messages/Messages';
 import NameForm from '../NameForm/NameForm';
 import './Chat.css';
 
-const ChatView = ({name, setName, messages, handleNewMessage}) => {
+const ChatView = ({socket, name, setName, messages, handleNewMessage}) => {
   return (
     <section className="Chat">
       <header className="bg-dark text-light">
@@ -15,7 +15,7 @@ const ChatView = ({name, setName, messages, handleNewMessage}) => {
             name={name}
             messages={messages}
             handleNewMessage={handleNewMessage} />
-          : <NameForm setName={setName} />
+          : <NameForm socket={socket} setName={setName} />
       }
     </section>
   );
